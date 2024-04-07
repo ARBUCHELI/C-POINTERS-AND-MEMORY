@@ -1,0 +1,174 @@
+# PROJECT
+---------
+
+* String Copier
+---------------
+In the lesson on strings, you learned about the strcpy() function that is used to copy one string into another string. Recall that strcpy() requires two strings: one source string and one 
+destination string. It will copy the contents of the source string into the destination string.
+
+In this project, you will increase your understanding of this function by implementing its functionality. You will see how strcpy() works “under the hood.”
+
+In your code, you will implement the strcpy() functionality inside the copy() function. You will do this by using your knowledge about pointers.
+
+Recall that a string is an array of type char. Also, recall that an array can be traversed using a pointer. A pointer to an array (or string) initially points to the first element 
+(or character) in the array (string).
+
+The concept of a function will be covered in a later lesson, so don’t worry too much about the details of how a function works. For now, just think of a function as a way to neatly 
+organize your code.
+
+Inside the copy() function, the char pointer src is pointing to the address of the first character in the source string, and the dst pointer is pointing to the first character of the 
+destination string.
+
+* Copying Strings
+-----------------
+1.
+Inside this function:
+
+void copy(char* dst, char* src){
+  // Code for copying a string goes here
+}
+
+Remove the comment and write an empty while loop (both condition and body should be empty) that will be used to traverse the string. You will fill in the loop condition and loop body in 
+later tasks.
+
+
+Hint
+A while loop is written like this:
+
+while(//condition){
+  // Loop body
+}
+
+Remember, your while loop should have an empty condition and body.
+
+2.
+Inside the loop body, write code that will copy the character pointed to by src into the address stored in dst.
+
+
+Hint
+To obtain the character pointed to by src you will need to use the dereference operator like this: *src.
+
+To store the character that is obtained by dereferencing src you must also dereference dst like this: *dst.
+
+Set the character at the address of dst to the character at the address of src.
+
+3.
+Increment the src pointer by one so that it points to the next character in the source string.
+
+
+Hint
+A pointer is incremented like this:
+
+ptr++;
+
+4.
+Increment the dst pointer so that it points to the next available space in the destination string.
+
+
+Hint
+This is the same thing you did in Task 4!
+
+Incrementing a pointer:
+
+ptr++;
+
+5.
+Fill in the loop condition such that the loop stops when the character pointed to by src is the null terminating character ('\0')
+
+
+Hint
+The loop should stop when *src == '\0'. It should keep going while *src does not equal '\0'.
+
+6.
+Since the loop terminated when src was pointing to the terminating character, that character was not copied into the dst string!
+
+dst is already pointing to what should be the last character. Set that character to the null terminating character.
+
+
+Hint
+This should go outside the while loop.
+
+Set the character currently being pointed to by dst to ‘\0’.
+
+* Testing the Function
+----------------------
+7.
+Let’s test your new copy function!
+
+Inside main(), under the string srcString, create a new string called dstString that will be as long as srcString. Don’t forget to account for the terminating character!
+
+
+Hint
+Use the strlen() function to determine the size of srcString and create a char array (dstString) that is of that size plus one (for the null terminating character).
+
+8.
+Use your copy() function to copy srcString into dstString.
+
+
+Hint
+Your copy() function is called in the same manner as strcpy():
+
+strcpy(dstString, srcString);
+
+9.
+Let’s prove that your copy() function works! Print the dstString.
+
+
+Hint
+A string is printed like so:
+
+printf(“%s”, string);
+
+stringCopy.c
+------------
+#include<stdio.h>
+#include<string.h>
+ 
+void copy(char* dst, char* src){
+  while(*src != '\0')
+  {
+    *dst = *src;
+    src++;
+    dst++;
+  }
+  *dst = '\0';
+}
+ 
+int main(){
+  char srcString[] = "We promptly judged antique ivory buckles for the next prize!";
+  int len = strlen(srcString);
+  char dstString[len];
+  copy(dstString, srcString);
+  printf("%s", dstString);
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
